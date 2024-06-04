@@ -32,10 +32,6 @@ header {
 
 }
 
-div.nav-wrapper {
-    list-style-type: none;
-}
-
 ul.right {
     list-style-type: none;
     margin: 0;
@@ -96,4 +92,7 @@ img.landing-image {
     height: 85%;
     width: 90%;
 
+}
+.games-container {
+    display: grid;
 }
