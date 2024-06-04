@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvest_Moon_Haven</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp; Harvest_Moon_Haven </a></li>
+                </ul>
+                <ul class="right">
+                  <li><a href="{% url 'about' %}">About</a></li>
+            </div>            
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="page-footer">
+        <div class="center">All Rights Reserved, &copy;2024 Harvest_Moon_Haven &nbsp;</div>
+    </footer>
+</body>
+</html>
