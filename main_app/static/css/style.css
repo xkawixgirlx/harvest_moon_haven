@@ -4,44 +4,85 @@
     --lightgreen-color: #F0FFF0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    justify-content: flex-start;
     background-color: var(--lightgreen-color);
-    
+
 }
 
 main {
     flex: 1 0 auto;
+    
 }
+
 header {
     margin-bottom: 4rem;
     padding: 2rem 0;
     background-color: #F5DEB3;
     border-bottom: 4px solid #996515;
-  }
+    box-shadow: 2px 2px 4px black;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
 h1 {
     font-family: 'funhouse';
     color: white;
-    text-shadow: 4px 6px 1px black;
+    text-shadow: 4px 6px black;
+    justify-content: center;
 }
 
 footer.page-footer {
     padding-top: 0;
     text-align: center;
     background-color: #F5DEB3;
+    box-shadow: 2px 2px 4px black;
 }
+
+li a:hover {
+    background-color: rgba(153, 101, 21, 0.55);
+}
+
 .submit-logout {
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
-  }
-  
-  button.submit-logout:focus {
+}
+
+button.submit-logout:focus {
     background-color: transparent;
     outline: none;
-  }
+}
+img.landing-image {
+    height: 85%;
+    width: 90%;
+    
+}

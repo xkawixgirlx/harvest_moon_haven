@@ -13,13 +13,13 @@
         <nav>
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp; Harvest_Moon_Haven </a></li>
+                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;Harvest_Moon_Haven</a></li>
                 </ul>
                 <ul class="right">
                   <li><a href="{% url 'about' %}">About</a></li>
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'games' %}">Games List</a></li>
-                  <li>{{ user }}</li>
+                  <li>&nbsp;Welcome, {{ user }}&nbsp;</li>
                   <li>
                     <a href="#">
                         <form action="{% url 'logout' %}" method="POST">
