@@ -20,7 +20,7 @@ body {
 
 main {
     flex: 1 0 auto;
-    
+
 }
 
 header {
@@ -32,7 +32,11 @@ header {
 
 }
 
-ul {
+div.nav-wrapper {
+    list-style-type: none;
+}
+
+ul.right {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -52,6 +56,10 @@ li a {
     text-decoration: none;
 }
 
+li a:hover {
+    background-color: rgba(153, 101, 21, 0.55);
+}
+
 h1 {
     font-family: 'funhouse';
     color: white;
@@ -66,9 +74,6 @@ footer.page-footer {
     box-shadow: 2px 2px 4px black;
 }
 
-li a:hover {
-    background-color: rgba(153, 101, 21, 0.55);
-}
 
 .submit-logout {
     background-color: transparent;
@@ -81,8 +86,14 @@ button.submit-logout:focus {
     background-color: transparent;
     outline: none;
 }
+
+.image-container {
+    display: grid;
+    justify-content: center;
+}
+
 img.landing-image {
     height: 85%;
     width: 90%;
-    
+
 }
