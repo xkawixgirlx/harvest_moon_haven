@@ -4,9 +4,6 @@
     --lightgreen-color: #F0FFF0;
 }
 
-* {
-    box-sizing: border-box;
-}
 
 body {
     display: flex;
@@ -24,16 +21,27 @@ header {
     padding: 2rem 0;
     background-color: #F5DEB3;
     border-bottom: 4px solid #996515;
-    color: hsl(300, 50%, 90%);
   }
 
 h1 {
     font-family: 'funhouse';
     color: white;
-    text-shadow: 3px 5px black;
+    text-shadow: 4px 6px 1px black;
 }
 
 footer.page-footer {
     padding-top: 0;
     text-align: center;
+    background-color: #F5DEB3;
 }
+.submit-logout {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button.submit-logout:focus {
+    background-color: transparent;
+    outline: none;
+  }
