@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if object %}
+    <h1>Edit Note:  {{ note.content }} </h1>
+{% else %}
+    <h1>Add Note for {{ game.title }}</h1>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="enter-notebtn" value="Add New Note">
+</form>
+
+{% endblock %}

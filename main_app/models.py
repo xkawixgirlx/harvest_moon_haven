@@ -11,7 +11,7 @@ class Game(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return f'{self.title} ({self.id})'
+        return f'{self.title}'
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'game_id': self.id})
@@ -24,4 +24,7 @@ class Note(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return f'{self.content}, {self.updated_at}'    
+        return f'{self.content}, {self.updated_at}' 
+    
+    class Meta:
+        ordering = ['-updated_at']   

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .models import Game
+from .models import Game, Note
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 
@@ -32,9 +32,10 @@ class GameDelete(DeleteView):
     model = Game
     success_url = '/games'
 
-
-def add_note(request, game_id):
-    pass
+class NoteCreate(CreateView):
+    model = Note
+    fields = ['content', 'game']
+    success_url = '/games/<int:game_id>'
 
 
 def signup(request):

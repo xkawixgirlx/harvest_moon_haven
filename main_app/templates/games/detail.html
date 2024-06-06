@@ -11,11 +11,8 @@
     <a href="{% url 'game_delete' game.id %}">Delete Game</a>
     {% endif %}
     <p>Routing Notes: {{ note.content }}</p>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ note_form.as_p }}
-        <input type="submit" class="enter-notebtn" value="Add New Note">
-    </form>
+    <a href="{% url 'create_note' note.id %}">Create Note</a>
+
 </div>
 
 {% endblock %}
