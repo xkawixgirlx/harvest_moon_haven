@@ -35,7 +35,11 @@ class GameDelete(DeleteView):
 class NoteCreate(CreateView):
     model = Note
     fields = ['content', 'game']
-    success_url = '/games/<int:game_id>'
+    success_url = '/games'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 def signup(request):
