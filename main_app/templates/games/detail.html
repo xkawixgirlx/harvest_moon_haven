@@ -5,7 +5,7 @@
 
 
 <div>
-    <p>Routing Notes: {{ game.notes }}</p>
+    <p>Routing Notes: {{ note.content }}</p>
     <form action="" method="POST">
         {% csrf_token %}
         {{ notes_form.as_p }}
