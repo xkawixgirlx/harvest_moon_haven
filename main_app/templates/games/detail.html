@@ -8,7 +8,7 @@
     <p>Routing Notes: {{ note.content }}</p>
     <form action="" method="POST">
         {% csrf_token %}
-        {{ notes_form.as_p }}
+        {{ note_form.as_p }}
         <input type="submit" class="enter-notebtn" value="Add New Note">
     </form>
 </div>
