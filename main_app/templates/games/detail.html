@@ -5,10 +5,11 @@
 
 
 <div>
+    <p>Routing Notes: {{ game.notes }}</p>
     <form action="" method="POST">
         {% csrf_token %}
         {{ notes_form.as_p }}
-        <input type="submit" class="enter-notebtn" value="Add Note">
+        <input type="submit" class="enter-notebtn" value="Add New Note">
     </form>
 </div>
 

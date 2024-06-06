@@ -11,10 +11,12 @@ def about(request):
     return render(request, 'about.html')
 
 def games_list(request):
-    return render(request, 'games/index.html')
+    games = Game.objects.all()
+    return render(request, 'games/index.html', {'games': games})
 
 def game_detail(request, game_id):
     game = Game.objects.get(id=game_id)
+    print('game: ', game)
     return render(request, 'games/detail.html', {'game': game})
 
 
