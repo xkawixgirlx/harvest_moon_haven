@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Currently Viewing {{ game.title }}</h1>
+
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ notes_form.as_p }}
+        <input type="submit" class="enter-notebtn" value="Add Note">
+    </form>
+</div>
+
+{% endblock %}

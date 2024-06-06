@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from .models import Game
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -10,7 +11,11 @@ def about(request):
     return render(request, 'about.html')
 
 def games_list(request):
-    return render(request, 'games/games.html')
+    return render(request, 'games/index.html')
+
+def game_detail(request, game_id):
+    game = Game.objects.get(id=game_id)
+    return render(request, 'games/detail.html', {'game': game})
 
 
 def signup(request):
