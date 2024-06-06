@@ -3,7 +3,7 @@
 {% block content %}
 
 
-{% if object %}
+{% if note in notes %}
     <h1>Edit Note:  {{ note.content }} </h1>
 {% else %}
     <h1>Add Note for {{ game.title }}</h1>

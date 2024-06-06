@@ -17,7 +17,9 @@ def games_list(request):
 
 def game_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    return render(request, 'games/detail.html', {'game': game})
+    notes = Note.objects.filter(game=game_id)
+    print(notes)
+    return render(request, 'games/detail.html', {'game': game, 'notes': notes})
 
 
 class GameCreate(CreateView):
@@ -40,6 +42,7 @@ class NoteCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
 
 
 def signup(request):

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Currently Viewing {{ game.title }}</h1>
+<h1>Currently Viewing {{ game.title }}'s Notes</h1>
 
 
 <div>
@@ -10,9 +10,15 @@
     <br />
     <a href="{% url 'game_delete' game.id %}">Delete Game</a>
     {% endif %}
-    <p>Routing Notes: {{ note.content }}</p>
+    {% if notes %}
+    {% for note in notes %}
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.content }}</p>
+    {% endfor %}
+    {% else %}
+    <h5>No Notes Added</h5>
+    {% endif %}
     <a href="{% url 'create_note' game.id %}">Create Note</a>
-
 </div>
 
 {% endblock %}

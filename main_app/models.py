@@ -18,6 +18,7 @@ class Game(models.Model):
 
 
 class Note(models.Model):
+    title = models.CharField(max_length=100)
     content = models.TextField(max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
