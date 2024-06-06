@@ -17,7 +17,6 @@ def games_list(request):
 
 def game_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    print('game: ', game)
     return render(request, 'games/detail.html', {'game': game})
 
 class GameCreate(CreateView):
