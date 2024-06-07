@@ -10,17 +10,18 @@
     <br />
     <a href="{% url 'game_delete' game.id %}">Delete Game</a>
     {% endif %}
+    <a href="{% url 'create_note' game.id %}">Create Note</a>
     {% if notes %}
     {% for note in notes %}
     <h3>{{ note.title }}</h3>
     <h5>{{ note.updated_at }}</h5>
     <p>{{ note.content }}</p>
     <a href="{% url 'note_update' note.id %}">Edit Note</a>
+    <a href="{% url 'delete_note' note.id %}">Delete Note</a>
     {% endfor %}
     {% else %}
     <h3>No Notes Added</h3>
     {% endif %}
-    <a href="{% url 'create_note' game.id %}">Create Note</a>
 </div>
 
 {% endblock %}

@@ -35,13 +35,6 @@ class GameDelete(DeleteView):
     model = Game
     success_url = '/games'
 
-# class NoteCreate(CreateView):
-#     model = Note
-#     fields = ['title','content', 'game']
- 
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
 
 def note_create(request, game_id):
     form = NoteForm(request.POST, use_required_attribute=False)
@@ -54,11 +47,7 @@ def note_create(request, game_id):
         return redirect('detail', game_id)    
     return render(request,'main_app/note_form.html', {'form': form})
         
-def note_update(request, game_id, note_id):
-    game = Game.objects.get(id=game_id)
-    note = Note.objects.get(notes__pk=note_id)
-    template = loader.get_template('main_app/note_update_form.html')
-    return render(request, 'main_app/note_update_form.html', {'template': template, 'game': game, 'note': note})  
+ 
 
 class NoteUpdate(UpdateView):
     model = Note
@@ -68,6 +57,11 @@ class NoteUpdate(UpdateView):
     def get_success_url(self):
         return f"/games/{self.object.game.id}"   
 
+class NoteDelete(DeleteView):
+    model = Note
+    
+    def get_success_url(self):
+        return f"/games/{self.object.game.id}"
 
 
 def signup(request):
