@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.template import loader
 from .models import Game, Note
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
@@ -45,8 +46,6 @@ class GameDelete(DeleteView):
 def note_create(request, game_id):
     form = NoteForm(request.POST, use_required_attribute=False)
     game = Game.objects.get(id=game_id)
-    print(game)
-    notes = Note.objects.filter(game=game_id)
     if form.is_valid():
         new_note = form.save(commit=False)
         new_note.user = request.user
@@ -55,6 +54,12 @@ def note_create(request, game_id):
         return redirect('detail', game_id)    
     return render(request,'main_app/note_form.html', {'form': form})
         
+def note_update(request, game_id, note_id):
+    game = Game.objects.get(id=game_id)
+    note = Note.objects.get(notes__pk=note_id)
+    template = loader.get_template('main_app/note_update_form.html')
+    return render(request, 'main_app/note_update_form.html', {'template': template, 'game': game, 'note': note})  
+
     
 
 

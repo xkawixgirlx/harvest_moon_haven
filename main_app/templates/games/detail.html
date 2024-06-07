@@ -15,6 +15,7 @@
     <h3>{{ note.title }}</h3>
     <h5>{{ note.updated_at }}</h5>
     <p>{{ note.content }}</p>
+    <a href="{% url 'update_note' game.id note.id %}">Update Note</a>
     {% endfor %}
     {% else %}
     <h3>No Notes Added</h3>

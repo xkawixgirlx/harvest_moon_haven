@@ -21,7 +21,7 @@ class Note(models.Model):
     title = models.CharField(max_length=100, default='null')
     content = models.TextField(max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, related_name='notes', on_delete=models.CASCADE)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
@@ -30,6 +30,6 @@ class Note(models.Model):
     class Meta:
         ordering = ['-updated_at']   
     
-    def get_absolute_url(game_id):
-        print(game_id)
-        return reverse('detail', kwargs={'game_id': game_id})
+    def get_absolute_url(self):
+        print(self)
+        return reverse('detail', kwargs={'note_id': self.id})
