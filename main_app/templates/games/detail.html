@@ -12,10 +12,12 @@
     {% endif %}
     {% if notes %}
     {% for note in notes %}
+    <h3>{{ note.title }}</h3>
+    <h5>{{ note.updated_at }}</h5>
     <p>{{ note.content }}</p>
     {% endfor %}
     {% else %}
-    <h5>No Notes Added</h5>
+    <h3>No Notes Added</h3>
     {% endif %}
     <a href="{% url 'create_note' game.id %}">Create Note</a>
 </div>

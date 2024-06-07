@@ -3,15 +3,23 @@
 {% block content %}
 
 
-{% if note in notes %}
-    <h1>Edit Note:  {{ note.content }} </h1>
+{% if notes in note %}
+<h1>Edit Note: {{ notes.content }} </h1>
 {% else %}
-    <h1>Add Note for {{ game.title }}</h1>
+<h1>Add Note for {{ game.title }}</h1>
 {% endif %}
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for item in form %}
+    <div class="fieldWrapper">
+        {{ item.label }} {{ item }}
+        {% if item.help_text %}
+        {{ item.help_text|safe }}
+        {% endif %}
+    </div>
+    <br>
+    {% endfor %}
     <input type="submit" class="enter-notebtn" value="Add New Note">
 </form>
 

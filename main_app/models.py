@@ -29,3 +29,7 @@ class Note(models.Model):
     
     class Meta:
         ordering = ['-updated_at']   
+    
+    def get_absolute_url(game_id):
+        print(game_id)
+        return reverse('detail', kwargs={'game_id': game_id})
