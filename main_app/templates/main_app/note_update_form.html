@@ -2,23 +2,15 @@
 
 {% block content %}
 
-{% if note %}
-    <h1>Edit{{ note.content }}</h1>
-{% endif %}
+<h1>Edit {{ note.title }}</h1>
 
 
 <form action="" method="POST">
     {% csrf_token %}
-    {% for item in form %}
-    <div class="fieldWrapper">
-        {{ item.label }} {{ item }}
-        {% if item.help_text %}
-        {{ item.help_text|safe }}
-        {% endif %}
-    </div>
-    <br>
-    {% endfor %}
-    <input type="submit" class="edit-notebtn" value="Edit Note">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" class="edit-notebtn" value="Submit Note">
 </form>
 
 {% endblock %}

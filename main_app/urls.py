@@ -11,6 +11,6 @@ urlpatterns = [
     path('games/<int:pk>/delete/', views.GameDelete.as_view(), name='game_delete'),
     path('games/<int:game_id>', views.game_detail, name='detail'),
     path('games/<int:game_id>/create_note', views.note_create, name='create_note'),
-    path('games/<int:game_id>/update_note/<int:note_id>', views.note_update, name='update_note'),
+    path('notes/<int:pk>/update/', views.NoteUpdate.as_view(), name='note_update'),
     path('accounts/signup/', views.signup, name='signup'),
 ]

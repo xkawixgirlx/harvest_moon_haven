@@ -3,11 +3,8 @@
 {% block content %}
 
 
-{% if note %}
-<h1>Edit Note: {{ note.content }} </h1>
-{% else %}
+
 <h1>Add Note</h1>
-{% endif %}
 
 <form action="" method="POST">
     {% csrf_token %}

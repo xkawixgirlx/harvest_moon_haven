@@ -60,7 +60,13 @@ def note_update(request, game_id, note_id):
     template = loader.get_template('main_app/note_update_form.html')
     return render(request, 'main_app/note_update_form.html', {'template': template, 'game': game, 'note': note})  
 
+class NoteUpdate(UpdateView):
+    model = Note
+    fields = ['title', 'content']
+    template_name = 'main_app/note_update_form.html' 
     
+    def get_success_url(self):
+        return f"/games/{self.object.game.id}"   
 
 
 

@@ -3,16 +3,18 @@
 {% block content %}
 
 {% if object %}
-    <h1>Edit {{ game.title }} </h1>
- {% else %}
-    <h1>Add Game</h1>
-{% endif %} 
+<h1>Edit {{ game.title }} </h1>
+{% else %}
+<h1>Add Game</h1>
+{% endif %}
 
 
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    <table>
+        {{ form.as_table }}
+    </table>
     <input type="submit" value="Add Game" class="add-gamebtn">
 </form>
 
