@@ -25,6 +25,8 @@ class Bachelor(models.Model):
     hated = models.TextField(max_length=100)
     name = models.CharField(max_length=100)
     games = models.ManyToManyField(Game)
+
+
     
 class Bachelorette(models.Model):
     loved = models.TextField(max_length=100)
@@ -36,13 +38,14 @@ class Bachelorette(models.Model):
     games = models.ManyToManyField(Game)
 
 
+
 class Note(models.Model):
     title = models.CharField(max_length=100, default='null')
     content = models.TextField(max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, related_name='notes', on_delete=models.CASCADE)
-    bachelors = models.ForeignKey(Bachelor, on_delete=models.CASCADE)
-    bachelorettes = models.ForeignKey(Bachelorette, on_delete=models.CASCADE)
+    bachelors = models.ForeignKey(Bachelor, on_delete=models.CASCADE, blank=True, null=True)
+    bachelorettes = models.ForeignKey(Bachelorette, on_delete=models.CASCADE, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
