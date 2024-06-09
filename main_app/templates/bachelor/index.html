@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>All Bachelors for {{ game.title }}</h1>
+
+
+{% if user.is_superuser %}
+<a href="{% url 'bachelor_create' %}">Create Bachelor</a>
+{% endif %}
+
+{% for bachelor in bachelors %}
+<h2>{{ bachelor.name }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Loved Gifts</th>
+                <th>Liked Gifts</th>
+                <th>Neutral Gifts</th>
+                <th>Disliked Gifts</th>
+                <th>Hated Gifts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{bachelor.loved}}</td>&nbsp;
+                <td>{{bachelor.liked}}</td>&nbsp;
+                <td>{{bachelor.neutral}}</td>&nbsp;
+                <td>{{bachelor.disliked}}</td>&nbsp;
+                <td>{{bachelor.hated}}</td>&nbsp;
+            </tr>
+        </tbody>
+    </table>
+{% endfor %}
+
+
+{% endblock %}

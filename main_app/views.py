@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.template import loader
-from .models import Game, Note
+from .models import Game, Note, Bachelor, Bachelorette
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 from .forms import NoteForm
@@ -66,8 +66,19 @@ class NoteDelete(DeleteView):
 
 def my_notes(request):
     notes = Note.objects.filter(user=request.user)
-    return render(request, 'notes/index.html', {'notes': notes})
+    games = Game.objects.all()
+    return render(request, 'notes/index.html', {'notes': notes, 'games': games})
 
+
+def all_bachelors(request, game_id):
+    games = Game.objects.get(id=game_id)
+    bachelors = Bachelor.objects.filter(games=game_id)
+    all_bachelors = Bachelor.objects.all()
+    return render(request, 'bachelor/index.html', {'games': games, 'bachelors': bachelors, 'all_bachelors': all_bachelors})
+
+class BachelorCreate(CreateView):
+    model = Bachelor
+    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
 
 def signup(request):
     error_message = ''

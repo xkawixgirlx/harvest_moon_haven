@@ -26,6 +26,11 @@ class Bachelor(models.Model):
     name = models.CharField(max_length=100)
     games = models.ManyToManyField(Game)
 
+    def __str__(self):
+        return f"{self.name}"
+    
+    def get_absolute_url(self):
+        return reverse('bachelors', kwargs={'bachelor_id': self.id})
 
     
 class Bachelorette(models.Model):
@@ -36,6 +41,12 @@ class Bachelorette(models.Model):
     hated = models.TextField(max_length=100)
     name = models.CharField(max_length=100)
     games = models.ManyToManyField(Game)
+    
+    def __str__(self):
+        return f"{self.name}"
+    
+    def get_absolute_url(self):
+        return reverse('bachelorettes', kwargs={'bachelorettes_id': self.id})
 
 
 
