@@ -64,6 +64,11 @@ class NoteDelete(DeleteView):
         return f"/games/{self.object.game.id}"
 
 
+def my_notes(request):
+    notes = Note.objects.filter(user=request.user)
+    return render(request, 'notes/index.html', {'notes': notes})
+
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> My Notes List</h1>
+
+<h2>All My Notes</h2>
+{% for note in notes %}
+<div class="notes-wrapper">
+    <h3>For {{ note.game }}</h3>
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.content }}</p>
+    <p>{{ note.updated_at }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}
