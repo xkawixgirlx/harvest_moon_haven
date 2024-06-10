@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from django.template import loader
 from .models import Game, Note, Bachelor, Bachelorette
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
@@ -80,15 +79,45 @@ class BachelorCreate(CreateView):
     model = Bachelor
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
     
+    def get_success_url(self):
+        return f"/games/{self.object.game.id}/all_bachelors"
+    
 class BachelorUpdate(UpdateView):
     model = Bachelor
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
 
 class BachelorDelete(DeleteView):
     model = Bachelor
-    success_url = '/all_bachelors'
+    success_url = '/games/'
 
 
+
+
+def all_bachelorettes(request, game_id):
+    games = Game.objects.get(id=game_id)
+    bachelorettes = Bachelorette.objects.filter(games=game_id)
+    all_bachelorettes = Bachelorette.objects.all()
+    return render(request, 'bachelorette/index.html', {'games': games, 'bachelorettes': bachelorettes, 'all_bachelorettes': all_bachelorettes })
+
+class BacheloretteCreate(CreateView):
+    model = Bachelorette
+    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+    
+    def get_success_url(self):
+        return f"/games/{self.object.game.id}/all_bachelorettes"
+
+class BacheloretteUpdate(UpdateView):
+        model = Bachelorette
+        fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+
+        def get_success_url(self):
+            return f"/games/{self.object.game.id}/all_bachelorettes"
+
+class BacheloretteDelete(DeleteView):
+    model = Bachelorette
+    
+    def get_success_url(self):
+        return f"/games/{self.object.game.id}/all_bachelorettes"
 
 
 def signup(request):

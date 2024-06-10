@@ -8,6 +8,7 @@
 <a href="{% url 'bachelor_create' %}">Create Bachelor</a>
 {% endif %}
 
+
 {% for bachelor in bachelors %}
 <h2>{{ bachelor.name }}</h2>
     <table>
@@ -31,7 +32,9 @@
         </tbody>
     </table>
     <a href="{% url 'bachelor_update' bachelor.id %}">Update Bachelor</a>&nbsp;
+    {% if user.is_superuser %}
     <a href="{% url 'bachelor_delete' bachelor.id %}">Delete Bachelor</a>
+    {% endif %}
 {% endfor %}
 
 

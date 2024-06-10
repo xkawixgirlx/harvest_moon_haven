@@ -18,5 +18,9 @@ urlpatterns = [
     path('bachelor/create', views.BachelorCreate.as_view(), name='bachelor_create'),
     path('bachelor/<int:pk>/update', views.BachelorUpdate.as_view(), name='bachelor_update'),
     path('bachelor/<int:pk>/delete', views.BachelorDelete.as_view(), name='bachelor_delete'),
+    path('games/<int:game_id>/all_bachelorettes', views.all_bachelorettes, name='bachelorettes'),
+    path('bachelorette/create', views.BacheloretteCreate.as_view(), name='bachelorette_create'),
+    path('bachelorette/<int:pk>/update', views.BacheloretteUpdate.as_view(), name='bachelorette_update'),
+    path('bachelorette/<int:pk>/delete', views.BacheloretteDelete.as_view(), name='bachelorette_delete'),
     path('accounts/signup/', views.signup, name='signup'),
 ]

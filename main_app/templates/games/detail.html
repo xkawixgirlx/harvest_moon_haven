@@ -12,6 +12,7 @@
     {% endif %}
     <a href="{% url 'create_note' game.id %}">Create Note</a>
     <a href="{% url 'bachelors' game.id %}">All Bachelors</a>
+    <a href="{% url 'bachelorettes' game.id %}">All Bachelorettes</a>
     {% if notes %}
     {% for note in notes %}
     <h3>{{ note.title }}</h3>

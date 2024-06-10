@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>All Bachelorettes for {{ game.title }}</h1>
+
+
+{% if user.is_superuser %}
+<a href="{% url 'bachelorette_create' %}">Create Bachelorette</a>
+{% endif %}
+
+
+{% for bachelorette in bachelorettes %}
+<h2>{{ bachelorette.name }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Loved Gifts</th>
+                <th>Liked Gifts</th>
+                <th>Neutral Gifts</th>
+                <th>Disliked Gifts</th>
+                <th>Hated Gifts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{bachelorette.loved}}</td>&nbsp;
+                <td>{{bachelorette.liked}}</td>&nbsp;
+                <td>{{bachelorette.neutral}}</td>&nbsp;
+                <td>{{bachelorette.disliked}}</td>&nbsp;
+                <td>{{bachelorette.hated}}</td>&nbsp;
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'bachelorette_update' bachelorette.id %}">Edit Bachelorette</a>&nbsp;
+    {% if user.is_superuser %}
+    <a href="{% url 'bachelorette_delete' bachelorette.id %}">Delete Bachelorette</a>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}
