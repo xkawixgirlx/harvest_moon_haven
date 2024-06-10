@@ -79,6 +79,17 @@ def all_bachelors(request, game_id):
 class BachelorCreate(CreateView):
     model = Bachelor
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+    
+class BachelorUpdate(UpdateView):
+    model = Bachelor
+    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+
+class BachelorDelete(DeleteView):
+    model = Bachelor
+    success_url = '/all_bachelors'
+
+
+
 
 def signup(request):
     error_message = ''

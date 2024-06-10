@@ -30,6 +30,8 @@
             </tr>
         </tbody>
     </table>
+    <a href="{% url 'bachelor_update' bachelor.id %}">Update Bachelor</a>&nbsp;
+    <a href="{% url 'bachelor_delete' bachelor.id %}">Delete Bachelor</a>
 {% endfor %}
 
 
