@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .models import Game, Note, Bachelor, Bachelorette
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView
 from django.contrib.auth.forms import UserCreationForm
 from .forms import NoteForm
 
@@ -99,6 +100,9 @@ def all_bachelorettes(request, game_id):
     all_bachelorettes = Bachelorette.objects.all()
     return render(request, 'bachelorette/index.html', {'games': games, 'bachelorettes': bachelorettes, 'all_bachelorettes': all_bachelorettes })
 
+class BacheloretteDetail(DetailView):
+    model = Bachelorette
+
 class BacheloretteCreate(CreateView):
     model = Bachelorette
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
@@ -118,6 +122,7 @@ class BacheloretteDelete(DeleteView):
     
     def get_success_url(self):
         return f"/games/{self.object.game.id}/all_bachelorettes"
+
 
 
 def signup(request):
