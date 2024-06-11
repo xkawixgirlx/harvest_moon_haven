@@ -12,12 +12,15 @@ from .forms import NoteForm
 def home(request):
     return render(request, 'home.html')
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 def games_list(request):
     games = Game.objects.all()
     return render(request, 'games/index.html', {'games': games})
+
 
 def game_detail(request, game_id):
     game = Game.objects.get(id=game_id)
@@ -26,20 +29,21 @@ def game_detail(request, game_id):
 
 
 
-class GameCreate(CreateView):
+class GameCreate(CreateView, LoginRequiredMixin):
     model = Game
     fields = ['title']
     
-class GameUpdate(UpdateView):
+class GameUpdate(UpdateView, LoginRequiredMixin):
     model = Game
     fields = ['title']
     
-class GameDelete(DeleteView):
+class GameDelete(DeleteView, LoginRequiredMixin):
     model = Game
     success_url = '/games'
 
 
 
+@login_required
 def note_create(request, game_id):
     form = NoteForm(request.POST, use_required_attribute=False)
     if form.is_valid():
@@ -52,7 +56,7 @@ def note_create(request, game_id):
         
  
 
-class NoteUpdate(UpdateView):
+class NoteUpdate(UpdateView, LoginRequiredMixin):
     model = Note
     fields = ['title', 'content']
     template_name = 'main_app/note_update_form.html' 
@@ -60,7 +64,7 @@ class NoteUpdate(UpdateView):
     def get_success_url(self):
         return f"/games/{self.object.game.id}"   
 
-class NoteDelete(DeleteView):
+class NoteDelete(DeleteView, LoginRequiredMixin):
     model = Note
     
     def get_success_url(self):
@@ -68,6 +72,7 @@ class NoteDelete(DeleteView):
 
 
 
+@login_required
 def my_notes(request):
     notes = Note.objects.filter(user=request.user)
     games = Game.objects.all()
@@ -81,7 +86,7 @@ def all_bachelors(request, game_id):
     game = Game.objects.get(id=game_id)
     return render(request, 'bachelor/index.html', {'game': game})
 
-class BachelorCreate(CreateView):
+class BachelorCreate(CreateView, LoginRequiredMixin):
     model = Bachelor
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
     
@@ -91,7 +96,7 @@ class BachelorCreate(CreateView):
 class BachelorDetail(DetailView):
     model = Bachelor
     
-class BachelorUpdate(UpdateView):
+class BachelorUpdate(UpdateView, LoginRequiredMixin):
     model = Bachelor
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
     template_name = 'main_app/bachelor_update_form.html'
@@ -99,11 +104,13 @@ class BachelorUpdate(UpdateView):
     def get_success_url(self):
         return f"/games/{self.object.game.id}/all_bachelors"
 
-class BachelorDelete(DeleteView):
+class BachelorDelete(DeleteView, LoginRequiredMixin):
     model = Bachelor
     success_url = '/games/{game_id}/all_bachelors'
+   
+   
     
-
+@login_required
 def bachelor_createnote(request, bachelor_id):
     form = NoteForm(request.POST)
     bachelor = Bachelor.objects.get(id=bachelor_id)
@@ -117,11 +124,14 @@ def bachelor_createnote(request, bachelor_id):
     return render(request,'main_app/note_form.html', {'form': form})
 
 
+
 def all_bachelorettes(request, game_id):
     game = Game.objects.get(id=game_id)
     return render(request, 'bachelorette/index.html', {'game': game})
   
-class BacheloretteCreate(CreateView):
+  
+  
+class BacheloretteCreate(CreateView, LoginRequiredMixin):
     model = Bachelorette
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
     
@@ -131,18 +141,20 @@ class BacheloretteCreate(CreateView):
 class BacheloretteDetail(DetailView):
     model = Bachelorette
     
-class BacheloretteUpdate(UpdateView):
+class BacheloretteUpdate(UpdateView, LoginRequiredMixin):
         model = Bachelorette
         fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
 
         def get_success_url(self):
             return f'/games/{self.object.game.id}/all_bachelorettes'
 
-class BacheloretteDelete(DeleteView):
+class BacheloretteDelete(DeleteView, LoginRequiredMixin):
     model = Bachelorette
     success_url = '/games/{game_id}/all_bachelorettes'
   
-
+  
+  
+@login_required
 def bachelorette_createnote(request, bachelorette_id):
     form = NoteForm(request.POST)
     bachelorette = Bachelorette.objects.get(id=bachelorette_id)
