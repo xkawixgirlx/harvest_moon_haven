@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<a href="javascript:history.back()">Go Back</a>
+<a href="javascript:history.back()">Back</a>
 {% if object %}
 <h1>{{ bachelor.name }}/{{ object.game.title }}</h1>
 <table>
@@ -25,7 +25,7 @@
         </tr>
     </tbody>
 </table>
-
+<a href="{% url 'bachelor_update' bachelor.id %}">Update Bachelor</a>&nbsp;
 <p>Testing of the detail page render</p>
 <p>{{ note.bachelor }}</p>
 {% endif %}

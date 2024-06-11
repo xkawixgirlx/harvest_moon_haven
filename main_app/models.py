@@ -52,7 +52,7 @@ class Bachelorette(models.Model):
 
 class Note(models.Model):
     title = models.CharField(max_length=100, default='null')
-    content = models.TextField(max_length=500)
+    content = models.TextField(max_length=3500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, related_name='notes', on_delete=models.CASCADE)
     bachelors = models.ForeignKey(Bachelor, on_delete=models.CASCADE, blank=True, null=True)
