@@ -55,8 +55,8 @@ class Note(models.Model):
     content = models.TextField(max_length=3500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, related_name='notes', on_delete=models.CASCADE)
-    bachelors = models.ForeignKey(Bachelor, on_delete=models.CASCADE, blank=True, null=True)
-    bachelorettes = models.ForeignKey(Bachelorette, on_delete=models.CASCADE, blank=True, null=True)
+    bachelor = models.ForeignKey(Bachelor, on_delete=models.CASCADE, blank=True, null=True)
+    bachelorette = models.ForeignKey(Bachelorette, on_delete=models.CASCADE, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
