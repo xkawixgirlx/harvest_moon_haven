@@ -27,7 +27,7 @@
 </table>
 <a href="{% url 'bachelorette_update' bachelorette.id %}">Update Bachelorette</a>&nbsp;
 <p>Testing of the detail page render</p>
-{% for note in notes %}
+{% for note in object.note.content %}
 <h2>{{ note.title }}</h2>
 <p>{{ note.updated_at }}</p>
 <p>{{ note.content }}</p>

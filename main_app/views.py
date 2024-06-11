@@ -72,7 +72,9 @@ class NoteDelete(DeleteView):
 def my_notes(request):
     notes = Note.objects.filter(user=request.user)
     games = Game.objects.all()
-    return render(request, 'notes/index.html', {'notes': notes, 'games': games})
+    bachelors = Bachelor.objects.all()
+    bachelorettes = Bachelorette.objects.all()
+    return render(request, 'notes/index.html', {'notes': notes, 'games': games, 'bachelors': bachelors, 'bachelorettes': bachelorettes})
 
 
 
@@ -128,6 +130,25 @@ class BacheloretteDelete(DeleteView):
     model = Bachelorette
     success_url = '/games/{game_id}/all_bachelorettes'
   
+  
+# def bachelorette_detail(request, bachelorette_id):
+#     bachelorette = Bachelorette.objects.filter(game_id=game_id)
+#     game = Game.objects.get(id=game_id)
+#     notes = Note.objects.filter(bachelorette_id=bachelorette_id)
+#     return render(request, 'bachelorette/detail.html', {'bachelorette': bachelorette, 'notes': notes, 'game': game})
+
+
+def bachelorette_createnote(request, bachelorette_id):
+    form = NoteForm(request.POST)
+    if form.is_valid():
+        new_bachelorette_note = form.save(commit=False)
+        new_bachelorette_note.user = request.user
+        new_bachelorette_note.bachelorette_id = bachelorette_id
+        new_bachelorette_note.game_id = bachelorette_id
+        new_bachelorette_note.save()
+        return redirect('bachelorette_detail', bachelorette_id)    
+    return render(request,'main_app/note_form.html', {'form': form})
+
 
 
 def signup(request):

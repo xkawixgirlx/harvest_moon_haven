@@ -21,6 +21,7 @@ urlpatterns = [
     path('bachelor/<int:pk>/delete/', views.BachelorDelete.as_view(), name='bachelor_delete'),
     path('games/<int:game_id>/all_bachelorettes', views.all_bachelorettes, name='bachelorettes'),
     path('bachelorette/<int:pk>/', views.BacheloretteDetail.as_view(), name='bachelorette_detail'),
+    path('bachelorette/<int:bachelorette_id>/create_note', views.bachelorette_createnote, name='bachelorette_createnote'),
     path('bachelorette/create_bachelorette', views.BacheloretteCreate.as_view(), name='bachelorette_create'),
     path('bachelorette/<int:pk>/update/', views.BacheloretteUpdate.as_view(), name='bachelorette_update'),
     path('bachelorette/<int:pk>/delete/', views.BacheloretteDelete.as_view(), name='bachelorette_delete'),
