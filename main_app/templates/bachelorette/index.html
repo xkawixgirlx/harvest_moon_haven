@@ -8,7 +8,7 @@
 
 
 {% for bachelorette in game.bachelorettes.all %}
-<h2>{{ bachelorette.name }}</h2>
+<a href="{% url 'bachelorette_detail' bachelorette.id %}"><h2>{{ bachelorette.name }}</h2></a>
     <table>
         <thead>
             <tr>

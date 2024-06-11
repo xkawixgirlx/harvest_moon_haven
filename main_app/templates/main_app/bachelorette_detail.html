@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for bachelorette in bachelorettes %}
+<h1>{{ bachelorette.name }}</h1>
+{% endfor %}
+
+<p>Testing of the detail page render</p>
+<p>{{ note.bachelorette }}</p>
+
+{% endblock %}
