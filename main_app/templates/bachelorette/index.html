@@ -4,12 +4,10 @@
 <h1>View All Bachelorettes for {{ game.title }}</h1>
 
 
-{% if user.is_superuser %}
-<a href="{% url 'bachelorette_create' %}">Create Bachelorette</a>
-{% endif %}
 
 
-{% for bachelorette in bachelorettes %}
+
+{% for bachelorette in game.bachelorettes.all %}
 <h2>{{ bachelorette.name }}</h2>
     <table>
         <thead>
@@ -33,7 +31,7 @@
     </table>
     <a href="{% url 'bachelorette_update' bachelorette.id %}">Update Bachelorette</a>&nbsp;
     {% if user.is_superuser %}
-    <a href="{% url 'bachelorette_delete' bachelorette.id %}">Delete Bachelorette</a>
+        <a href="{% url 'bachelorette_delete' bachelorette.id %}">Delete Bachelorette</a>
     {% endif %}
 {% endfor %}
 

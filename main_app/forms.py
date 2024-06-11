@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Note, Bachelor
+from .models import Note
 
 
 class NoteForm(ModelForm):
@@ -7,7 +7,3 @@ class NoteForm(ModelForm):
         model = Note
         fields = ['title', 'content']
         
-class BachelorCreate(ModelForm):
-    class Meta:
-        model = Bachelor
-        fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']

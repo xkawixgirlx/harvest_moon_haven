@@ -18,6 +18,7 @@
                   {% if user.is_superuser %}
                   <li><a href="{% url 'game_create' %}">Add Game</a></li>
                   <li><a href="{% url 'bachelor_create' %}">Create Bachelor</a></li>
+                  <li><a href="{% url 'bachelorette_create' %}">Create Bachelorette</a></li>
                   {% endif %}
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'index' %}">View all Games Added List</a></li>
