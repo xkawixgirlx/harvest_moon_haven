@@ -114,11 +114,11 @@ class BachelorUpdate(UpdateView):
     template_name = 'main_app/bachelor_update_form.html'
     
     def get_success_url(self):
-        return f"/games/{self.object.games.id}/all_bachelors"
+        return f"/games/{self.object.game.id}/all_bachelors"
 
 class BachelorDelete(DeleteView):
     model = Bachelor
-    success_url = '/games'
+    success_url = '/games/{game_id}/all_bachelors'
 
 
 def remove_bachelor(request, game_id, bachelor_id):
