@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
+<a href="javascript:history.back()">Back</a>
 <h1>View All Bachelors for {{ game.title }}</h1>
-
-
 
 
 {% for bachelor in game.bachelors.all %}

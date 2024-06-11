@@ -2,11 +2,32 @@
 
 {% block content %}
 
-{% for bachelorette in bachelorette.all %}
-<h1>{{ bachelorette.name }}</h1>
-{% endfor %}
+<a href="javascript:history.back()">Back</a>
+{% if object %}
+<h1>{{ bachelorette.name }}/{{ object.game.title }}</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Loved Gifts</th>
+            <th>Liked Gifts</th>
+            <th>Neutral Gifts</th>
+            <th>Disliked Gifts</th>
+            <th>Hated Gifts</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{bachelorette.loved}}</td>&nbsp;
+            <td>{{bachelorette.liked}}</td>&nbsp;
+            <td>{{bachelorette.neutral}}</td>&nbsp;
+            <td>{{bachelorette.disliked}}</td>&nbsp;
+            <td>{{bachelorette.hated}}</td>&nbsp;
+        </tr>
+    </tbody>
+</table>
 
 <p>Testing of the detail page render</p>
-<p>{{ note.bachelorette }}</p>
+<p>{{ object.note.bachelorette }}</p>
+{% endif %}
 
 {% endblock %}
