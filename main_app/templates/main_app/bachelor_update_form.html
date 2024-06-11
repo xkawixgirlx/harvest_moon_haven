@@ -2,8 +2,7 @@
 
 {% block content %}
 
-<h1>Add Bachelor</h1>
-
+<h1>Edit {{ bachelor.name }}</h1>
 
 
 <form action="" method="POST">
@@ -11,7 +10,7 @@
     <table>
         {{ form.as_table }}
     </table>
-    <input type="submit" value="Add Bachelor" class="add-bachelorbtn">
+    <input type="submit" class="edit-bachelorbtn" value="Update Bachelor">
 </form>
 
 {% endblock %}

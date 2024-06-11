@@ -24,13 +24,13 @@ class Bachelor(models.Model):
     disliked = models.TextField(max_length=100)
     hated = models.TextField(max_length=100)
     name = models.CharField(max_length=100)
-    games = models.ManyToManyField(Game)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=True, null=True, related_name='bachelors')
 
     def __str__(self):
         return f"{self.name}"
     
     def get_absolute_url(self):
-        return reverse('bachelors', kwargs={'bachelor_id': self.id})
+        return reverse('bachelors', kwargs={'bachelors_id': self.id})
 
     
 class Bachelorette(models.Model):
@@ -40,7 +40,7 @@ class Bachelorette(models.Model):
     disliked = models.TextField(max_length=100)
     hated = models.TextField(max_length=100)
     name = models.CharField(max_length=100)
-    games = models.ManyToManyField(Game)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, blank=True, null=True, related_name='bachelorettes')
     
     def __str__(self):
         return f"{self.name}"

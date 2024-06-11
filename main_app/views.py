@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth import login
 from .models import Game, Note, Bachelor, Bachelorette
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView
 from django.contrib.auth.forms import UserCreationForm
-from .forms import NoteForm
+from .forms import NoteForm, BachelorCreate
 
 # Create your views here.
 def home(request):
@@ -23,6 +23,7 @@ def game_detail(request, game_id):
     return render(request, 'games/detail.html', {'game': game, 'notes': notes})
 
 
+
 class GameCreate(CreateView):
     model = Game
     fields = ['title']
@@ -34,6 +35,7 @@ class GameUpdate(UpdateView):
 class GameDelete(DeleteView):
     model = Game
     success_url = '/games'
+
 
 
 def note_create(request, game_id):
@@ -64,65 +66,89 @@ class NoteDelete(DeleteView):
         return f"/games/{self.object.game.id}"
 
 
+
 def my_notes(request):
     notes = Note.objects.filter(user=request.user)
     games = Game.objects.all()
     return render(request, 'notes/index.html', {'notes': notes, 'games': games})
 
 
+
 def all_bachelors(request, game_id):
-    games = Game.objects.get(id=game_id)
-    bachelors = Bachelor.objects.filter(games=game_id)
-    all_bachelors = Bachelor.objects.all()
-    return render(request, 'bachelor/index.html', {'games': games, 'bachelors': bachelors, 'all_bachelors': all_bachelors})
+    game = Game.objects.get(id=game_id)
+    # bachelors = Bachelor.objects.filter(game=game_id)
+    # all_bachelors = Bachelor.objects.exclude(game=game_id) 
+    return render(request, 'bachelor/index.html', {'game': game})
 
 class BachelorCreate(CreateView):
     model = Bachelor
-    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
     
     def get_success_url(self):
-        return f"/games/{self.object.game.id}/all_bachelors"
+        return f'/games/{self.object.game.id}/all_bachelors'
+
+
+# def create_bachelor(request):
+#     form = BachelorCreate(request.POST)
+#     if form.is_valid():
+#         new_bachelor = form.save(commit=False)
+#         new_bachelor.save()
+#         return redirect('bachelors')
+#     return render(request, 'main_app/bachelor_form.html', {'form': form})
+    
+
+
+# def add_bachelor(request, game_id):
+#     if request.method == "POST" and "bachelor" in request.POST:
+#         id = request.POST.get('bachelor')
+#         bachelor = Bachelor.objects.get(id=id)
+#         bachelor.games.add(game_id)
+#         print(bachelor)
+#     return redirect( 'bachelors', game_id = game_id )
+#     # game = Game.objects.get(id=game_id)    
+#     # return render(request,'main_app/bachelor_form.html', {'form': form})
     
 class BachelorUpdate(UpdateView):
     model = Bachelor
-    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
+    template_name = 'main_app/bachelor_update_form.html'
+    
+    def get_success_url(self):
+        return f"/games/{self.object.games.id}/all_bachelors"
 
 class BachelorDelete(DeleteView):
     model = Bachelor
-    success_url = '/games/'
+    success_url = '/games'
 
 
+def remove_bachelor(request, game_id, bachelor_id):
+    bachelor = Bachelor.objects.get(id=bachelor_id)
+    bachelor.games.remove(game_id)
+    print(bachelor)
+    return redirect( 'bachelors', game_id = game_id )
+    # game = Game.objects.get(id=game_id)    
+    # return render(request,'main_app/bachelor_form.html', {'form': form})
 
 
 def all_bachelorettes(request, game_id):
-    games = Game.objects.get(id=game_id)
-    bachelorettes = Bachelorette.objects.filter(games=game_id)
+    game = Game.objects.get(id=game_id)
+    bachelorettes = Bachelorette.objects.filter(game=game_id)
     all_bachelorettes = Bachelorette.objects.all()
-    return render(request, 'bachelorette/index.html', {'games': games, 'bachelorettes': bachelorettes, 'all_bachelorettes': all_bachelorettes })
+    return render(request, 'bachelorette/index.html', {'game': game, 'bachelorettes': bachelorettes, 'all_bachelorettes': all_bachelorettes })
 
-class BacheloretteDetail(DetailView):
-    model = Bachelorette
 
 class BacheloretteCreate(CreateView):
     model = Bachelorette
-    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
+    fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
     
-    def get_success_url(self):
-        return f"/games/{self.object.game.id}/all_bachelorettes"
-
 class BacheloretteUpdate(UpdateView):
         model = Bachelorette
-        fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'games']
-
-        def get_success_url(self):
-            return f"/games/{self.object.game.id}/all_bachelorettes"
+        fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']
 
 class BacheloretteDelete(DeleteView):
     model = Bachelorette
-    
-    def get_success_url(self):
-        return f"/games/{self.object.game.id}/all_bachelorettes"
-
+    success_url = '/games'
+  
 
 
 def signup(request):
