@@ -15,6 +15,7 @@ urlpatterns = [
     path('notes/<int:pk>/update/', views.NoteUpdate.as_view(), name='note_update'),
     path('notes/<int:pk>/delete/', views.NoteDelete.as_view(), name='delete_note'),
     path('games/<int:game_id>/all_bachelors', views.all_bachelors, name='bachelors'),
+    path('bachelor/<int:pk>/', views.BachelorDetail.as_view(), name='bachelor_detail'),
     path('bachelor/create', views.BachelorCreate.as_view(), name='bachelor_create'),
     path('bachelor/<int:pk>/update/', views.BachelorUpdate.as_view(), name='bachelor_update'),
     path('bachelor/<int:pk>/delete/', views.BachelorDelete.as_view(), name='bachelor_delete'),

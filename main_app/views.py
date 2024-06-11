@@ -87,6 +87,9 @@ class BachelorCreate(CreateView):
     def get_success_url(self):
         return f'/games/{self.object.game.id}/all_bachelors'
     
+class BachelorDetail(DetailView):
+    model = Bachelor
+    
 class BachelorUpdate(UpdateView):
     model = Bachelor
     fields = ['name', 'loved', 'liked', 'neutral', 'disliked', 'hated', 'game']

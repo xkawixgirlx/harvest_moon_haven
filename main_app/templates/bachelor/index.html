@@ -7,7 +7,7 @@
 
 
 {% for bachelor in game.bachelors.all %}
-    <h2>{{ bachelor.name }}</h2>
+<a href="{% url 'bachelor_detail' bachelor.id %}"><h2>{{ bachelor.name }}</h2></a>
     <table>
         <thead>
             <tr>
