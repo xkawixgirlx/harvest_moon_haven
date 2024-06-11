@@ -42,7 +42,6 @@ class GameDelete(DeleteView):
 
 def note_create(request, game_id):
     form = NoteForm(request.POST, use_required_attribute=False)
-    game = Game.objects.get(id=game_id)
     if form.is_valid():
         new_note = form.save(commit=False)
         new_note.user = request.user
@@ -103,6 +102,19 @@ class BachelorUpdate(UpdateView):
 class BachelorDelete(DeleteView):
     model = Bachelor
     success_url = '/games/{game_id}/all_bachelors'
+    
+
+def bachelor_createnote(request, bachelor_id):
+    form = NoteForm(request.POST)
+    bachelor = Bachelor.objects.get(id=bachelor_id)
+    if form.is_valid():
+        new_bachelor_note = form.save(commit=False)
+        new_bachelor_note.user = request.user
+        new_bachelor_note.bachelor_id = bachelor_id
+        new_bachelor_note.game_id = bachelor.game_id
+        new_bachelor_note.save()
+        return redirect('bachelor_detail', bachelor_id)    
+    return render(request,'main_app/note_form.html', {'form': form})
 
 
 def all_bachelorettes(request, game_id):
@@ -130,21 +142,15 @@ class BacheloretteDelete(DeleteView):
     model = Bachelorette
     success_url = '/games/{game_id}/all_bachelorettes'
   
-  
-# def bachelorette_detail(request, bachelorette_id):
-#     bachelorette = Bachelorette.objects.filter(game_id=game_id)
-#     game = Game.objects.get(id=game_id)
-#     notes = Note.objects.filter(bachelorette_id=bachelorette_id)
-#     return render(request, 'bachelorette/detail.html', {'bachelorette': bachelorette, 'notes': notes, 'game': game})
-
 
 def bachelorette_createnote(request, bachelorette_id):
     form = NoteForm(request.POST)
+    bachelorette = Bachelorette.objects.get(id=bachelorette_id)
     if form.is_valid():
         new_bachelorette_note = form.save(commit=False)
         new_bachelorette_note.user = request.user
         new_bachelorette_note.bachelorette_id = bachelorette_id
-        new_bachelorette_note.game_id = bachelorette_id
+        new_bachelorette_note.game_id = bachelorette.game_id
         new_bachelorette_note.save()
         return redirect('bachelorette_detail', bachelorette_id)    
     return render(request,'main_app/note_form.html', {'form': form})
