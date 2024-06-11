@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% for bachelor in bachelors %}
+{% for bachelor in bachelor.all %}
 <h1>{{ bachelor.name }}</h1>
 {% endfor %}
 

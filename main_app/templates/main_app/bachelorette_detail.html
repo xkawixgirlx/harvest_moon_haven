@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% for bachelorette in bachelorettes %}
+{% for bachelorette in bachelorette.all %}
 <h1>{{ bachelorette.name }}</h1>
 {% endfor %}
 
