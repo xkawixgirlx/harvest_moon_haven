@@ -37,6 +37,7 @@ header {
 }
 .container-base {
     display: flex;
+    align-items: center;
 
 }
 
@@ -66,6 +67,7 @@ a:hover {
     font-size: 16px;
     color: white;
     text-shadow: 1px 1px 2px black;
+    padding: 11px 13px 11px 4px;
 }
 
 h1 {
@@ -83,7 +85,6 @@ footer.page-footer {
     box-shadow: 2px 2px 4px black;
 }
 
-
 .submit-logout {
     background-color: transparent;
     border: none;
@@ -92,6 +93,7 @@ footer.page-footer {
     cursor: pointer;
     font-family: 'Raleway';
     font-size: 16px;
+    padding: 11px 13px;
 }
 
 button.submit-logout:focus {
