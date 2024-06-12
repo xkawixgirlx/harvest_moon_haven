@@ -35,18 +35,20 @@ header {
     
 
 }
+.container-base {
+    display: flex;
 
-
-ul.right {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
 }
 
+.nav-wrapper {
+    flex: 1;
+}
 
-li a {
-    display: flex;
+.nav-wrapper:first-child{
+    margin-right: 10px;
+}
+
+a {
     color: white;
     font-family: 'Raleway';
     text-shadow: 1px 1px 1px black;
@@ -54,12 +56,16 @@ li a {
     padding: 11px 13px;
     text-decoration: none;
 }
-li {
-    float: left;
-}
 
-li a:hover {
+a:hover {
     background-color: rgba(153, 101, 21, 0.55);
+}
+.user-info {
+    align-self: center;
+    font-family: 'Raleway';
+    font-size: 16px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
 }
 
 h1 {
@@ -120,21 +126,28 @@ section.blurb {
     box-sizing: border-box;
     flex-wrap: wrap;
 }
+img.icon {
+    padding: 5px;
+}
+
 .community-image {
     display: grid;
     justify-content: center;
     padding-top: 1rem;
 
 }
+
 img.about-image {
     height: 85%;
     width: 100%; 
+
 }
 .title-container {
     display: grid;
     justify-content: center;
     padding: 5px;
 }
+
 p.about {
     font-family: 'Raleway';
     font-size: 1.5rem;
@@ -142,6 +155,7 @@ p.about {
     text-align: center;
     text-shadow: 1px 1px 2px black;
 }
+
 .home, .about-title {
     font-style: bold;
     font-size: 3rem;

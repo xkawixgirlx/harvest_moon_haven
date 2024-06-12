@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'css/images/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'css/images/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'css/images/site.webmanifest' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -16,33 +20,29 @@
         <nav>
             <div class="container-base">
                 <div class="nav-wrapper">
-                    <ul class="right">
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;Harvest_Moon_Haven</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    {% if user.is_superuser %}
-                    <li><a href="{% url 'game_create' %}">Add Game</a></li>
-                    <li><a href="{% url 'bachelor_create' %}">Create Bachelor</a></li>
-                    <li><a href="{% url 'bachelorette_create' %}">Create Bachelorette</a></li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'index' %}">View all Games Added List</a></li>
-                    <li><a href="{% url 'notes_index' %}">View My Notes List</a></li>
-                    <li><a href="https://www.speedrun.com/series/hm/games">Speedrun HM Link</a></li>
-                    <li><img src="{% static 'css/images/1.png' %}" alt="baby-chu" class="icon">
-                    &nbsp;Welcome,&nbsp;{{ user }}&nbsp;</li>
-                    <li>
-                        <a href="#">
-                            <form action="{% url 'logout' %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="submit-logout">Logout</button>
-                            </form>
-                        </a>
-                    </li>
-                    {% else %}
-                        <li><a href="{% url 'signup' %}">Signup</a></li>
-                        <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
-                    </ul>
+                        <a href="{% url 'home' %}" class="left brand-logo">&nbsp;Harvest_Moon_Haven</a></div>
+                        <a href="{% url 'about' %}">About</a>
+                        {% if user.is_superuser %}
+                        <a href="{% url 'game_create' %}">Add Game</a>
+                        <a href="{% url 'bachelor_create' %}">Create Bachelor</a>
+                        <a href="{% url 'bachelorette_create' %}">Create Bachelorette</a>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'index' %}">View all Games Added List</a>
+                        <a href="{% url 'notes_index' %}">View My Notes List</a>
+                        <a href="https://www.speedrun.com/series/hm/games">Speedrun HM Link</a>
+                        <img src="{% static 'css/images/1.png' %}" alt="baby-chu" class="icon">
+                        <div class="user-info">&nbsp;Welcome,&nbsp;{{ user }}&nbsp;</div>
+                            <a href="#">
+                                <form action="{% url 'logout' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="submit-logout">Logout</button>
+                                </form>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'signup' %}">Signup</a>
+                            <a href="{% url 'login' %}">Login</a>
+                        {% endif %}
                 </div>            
             </div>
         </nav>
