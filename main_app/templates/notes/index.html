@@ -2,7 +2,11 @@
 
 {% block content %}
 
-<h1> My Notes List</h1>
+<a href="javascript:history.back()" class="back">Back</a>
+
+<div class="title-container">
+    <h1> My Notes List</h1>
+</div>
 
 <h2>All My Notes</h2>
 {% for note in notes %}

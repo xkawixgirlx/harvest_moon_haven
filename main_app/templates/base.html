@@ -20,29 +20,29 @@
         <nav>
             <div class="container-base">
                 <div class="nav-wrapper">
-                        <a href="{% url 'home' %}" class="left brand-logo">&nbsp;Harvest_Moon_Haven</a></div>
-                        <a href="{% url 'about' %}">About</a>
-                        {% if user.is_superuser %}
-                        <a href="{% url 'game_create' %}">Add Game</a>
-                        <a href="{% url 'bachelor_create' %}">Create Bachelor</a>
-                        <a href="{% url 'bachelorette_create' %}">Create Bachelorette</a>
-                        {% endif %}
-                        {% if user.is_authenticated %}
-                        <a href="{% url 'index' %}">View all Games Added List</a>
-                        <a href="{% url 'notes_index' %}">View My Notes List</a>
-                        <a href="https://www.speedrun.com/series/hm/games">Speedrun HM Link</a>
-                        <img src="{% static 'css/images/1.png' %}" alt="baby-chu" class="icon">
-                        <div class="user-info">&nbsp;Welcome,&nbsp;{{ user }}&nbsp;</div>
-                            <a href="#">
-                                <form action="{% url 'logout' %}" method="POST">
-                                    {% csrf_token %}
-                                    <button type="submit" class="submit-logout">Logout</button>
-                                </form>
-                            </a>
-                        {% else %}
-                            <a href="{% url 'signup' %}">Signup</a>
-                            <a href="{% url 'login' %}">Login</a>
-                        {% endif %}
+                    <a href="{% url 'home' %}" class="left brand-logo">&nbsp;Harvest_Moon_Haven</a></div>
+                    <a href="{% url 'about' %}">About</a>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'game_create' %}">Add Game</a>
+                    <a href="{% url 'bachelor_create' %}">Create Bachelor</a>
+                    <a href="{% url 'bachelorette_create' %}">Create Bachelorette</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'index' %}">View all Games Added List</a>
+                    <a href="{% url 'notes_index' %}">View My Notes List</a>
+                    <a href="https://www.speedrun.com/series/hm/games">Speedrun HM Link</a>
+                    <img src="{% static 'css/images/1.png' %}" alt="baby-chu" class="icon">
+                    <div class="user-info">&nbsp;Welcome,&nbsp;{{ user }}&nbsp;</div>
+                    <a href="#">
+                        <form action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="submit-logout">Logout</button>
+                        </form>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'signup' %}">Signup</a>
+                    <a href="{% url 'login' %}">Login</a>
+                    {% endif %}
                 </div>            
             </div>
         </nav>

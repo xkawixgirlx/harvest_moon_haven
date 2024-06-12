@@ -5,6 +5,7 @@
     --teagreen-color: #D0F0C0;
     --tan-color: #D2B48C;
     --bean-color: #3D0C02;
+    --papayawhip-color: #FFEFD5;
 }
 
 * {
@@ -32,10 +33,11 @@ header {
     background-color: #F5DEB3;
     border-bottom: 4px solid #996515;
     box-shadow: 2px 2px 4px black;
+    width: fit-content;
     
-
 }
-.container-base {
+
+.container-base{
     display: flex;
     align-items: center;
 
@@ -61,6 +63,7 @@ a {
 a:hover {
     background-color: rgba(153, 101, 21, 0.55);
 }
+
 .user-info {
     align-self: center;
     font-family: 'Raleway';
@@ -85,7 +88,7 @@ footer.page-footer {
     box-shadow: 2px 2px 4px black;
 }
 
-.submit-logout {
+button.submit-logout {
     background-color: transparent;
     border: none;
     color: white;
@@ -128,6 +131,7 @@ section.blurb {
     box-sizing: border-box;
     flex-wrap: wrap;
 }
+
 img.icon {
     padding: 5px;
 }
@@ -144,6 +148,7 @@ img.about-image {
     width: 100%; 
 
 }
+
 .title-container {
     display: grid;
     justify-content: center;
@@ -161,4 +166,87 @@ p.about {
 .home, .about-title {
     font-style: bold;
     font-size: 3rem;
+}
+.red-text {
+    color: red;
+    font-family: 'Raleway';
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px black;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid var(--darkbrown-color);
+    border-radius: 5px;
+    font-family: 'Raleway';
+}
+
+button[type=submit] {
+    background-color: var(--lightbrown-color);
+    color: var(--bean-color);
+    padding: 6px 11px;
+    border: 2px solid var(--bean-color);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px var(--bean-color);
+    align-items: center;
+
+}
+
+button[type=submit]:hover {
+    color: white;
+    background-color: var(--bean-color);
+}
+
+input[type=submit] {
+    background-color: var(--lightbrown-color);
+    color: var(--bean-color);
+    padding: 6px 11px;
+    margin: 10px;
+    border: 2px solid var(--bean-color);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px var(--bean-color);
+    align-items: center;
+
+}
+
+input[type=submit]:hover {
+    color: white;
+    background-color: var(--bean-color);
+}
+
+.form-container {
+    border: 6px var(--darkbrown-color);
+    border-style: double;
+    border-radius: 6px;
+    background-color: var(--papayawhip-color);
+    padding: 15px;
+    box-shadow: 2px 2px 7px black;
+}
+
+label {
+    font-family: 'Raleway';
+    font-size: 1.2rem;
+    color: var(--bean-color);
+    display: inline-block;
+    padding: 8px;
+}
+.helptext {
+    font-family: 'Raleway';
+    font-size: 1rem;
+}
+
+li {
+    font-family: 'Raleway';
+}
+
+.back {
+    margin: 10px;
+    color: var(--bean-color);
+    font-size: 1.3rem;
+}
+.back:hover {
+    color: white;
 }

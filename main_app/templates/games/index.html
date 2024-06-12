@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Welcome To Games List </h1>
-<hr />
+<div class="title-container">
+    <h1>Welcome To Games List </h1>
+    <hr />
+</div>
 {% for game in games %}
     <a href="{% url 'detail' game.id %}">
         <ul class="games-list">

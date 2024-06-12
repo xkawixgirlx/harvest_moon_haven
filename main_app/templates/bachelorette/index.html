@@ -3,9 +3,11 @@
 
 
 
-<a href="javascript:history.back()">Back</a>
-<h1>View All Bachelorettes for {{ game.title }}</h1>
+<a href="javascript:history.back()" class="back">Back</a>
 
+<div class="title-container">
+    <h1>View All Bachelorettes for {{ game.title }}</h1>
+</div>
 
 {% for bachelorette in game.bachelorettes.all %}
 <a href="{% url 'bachelorette_detail' bachelorette.id %}"><h2>{{ bachelorette.name }}</h2></a>

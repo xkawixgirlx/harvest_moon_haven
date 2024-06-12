@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="title-container">
+    <h1>Edit {{ note.title }}</h1>
+</div>
 
-<h1>Edit {{ note.title }}</h1>
-
-
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" class="edit-notebtn" value="Update Note">
-</form>
-
+<div class="form-container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" class="edit-notebtn" value="Update Note">
+    </form>
+</div>
 {% endblock %}
