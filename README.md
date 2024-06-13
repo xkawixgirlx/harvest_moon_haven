@@ -32,5 +32,4 @@ This is an app I made to give back to the Harvest Moon Speedrunners community. W
 - Add approved videos or images to Notes for routing
 - Add personal best runs for user in My Notes Section
 - Add embedded videos from imgur for the hard strats
-- Fix minor bugs
-- add more cute graphics
+- add more cute graphics, more game specific graphics. 
