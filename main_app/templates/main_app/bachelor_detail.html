@@ -34,9 +34,11 @@
 
 
 {% for note in bachelor.note_set.all %}
-<h2>{{ note.title }}</h2>
-<p>{{ note.updated_at }}</p>
-<p>{{ note.content }}</p>
+<div class="notes-content">
+    <h2>{{ note.title }}</h2>
+    <p>{{ note.updated_at }}</p>
+    <p class="notecontent">{{ note.content }}</p>
+</div>
 {% endfor %}
 <a href="{% url 'bachelor_createnote' bachelor.id %}">Create Note</a>
 {% endif %}
