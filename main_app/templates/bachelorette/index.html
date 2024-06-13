@@ -11,6 +11,7 @@
 
 {% for bachelorette in game.bachelorettes.all %}
 <a href="{% url 'bachelorette_detail' bachelorette.id %}"><h2>{{ bachelorette.name }}</h2></a>
+<div class="table-container">     
     <table class="gifts">
         <thead>
             <tr>
@@ -31,6 +32,7 @@
             </tr>
         </tbody>
     </table>
+</div>
     <a href="{% url 'bachelorette_update' bachelorette.id %}">Update Bachelorette</a>&nbsp;
     {% if user.is_superuser %}
         <a href="{% url 'bachelorette_delete' bachelorette.id %}">Delete Bachelorette</a>

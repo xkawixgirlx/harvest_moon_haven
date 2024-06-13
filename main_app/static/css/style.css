@@ -14,8 +14,7 @@
 
 body {
     display: flex;
-    height: 100%;
-    min-height: 100vh;
+    height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
     background-color: var(--lightgreen-color);
@@ -28,32 +27,36 @@ main {
 }
 
 header {
-    margin-bottom: 4rem;
-    padding: 2rem 0;
+    margin-bottom: 3rem;
+    padding: 1.75rem 8px;
     background-color: #F5DEB3;
     border-bottom: 4px solid #996515;
     box-shadow: 2px 2px 4px black;
-    width: fit-content;
+    width: 100vw;
+    
     
 }
 
-.container-base{
+.container-base {
     display: flex;
     align-items: center;
+    width: 100vw;
+    margin: 0 8px; 
 
 }
 
 .nav-wrapper {
-    flex: 1;
+    flex: 1 0 auto;
 }
 
 .nav-wrapper:first-child{
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
 a {
     color: white;
     font-family: 'Raleway';
+    font-size: 20px;
     text-shadow: 1px 1px 2px black;
     text-align: center;
     padding: 11px 13px;
@@ -67,7 +70,7 @@ a:hover {
 .user-info {
     align-self: center;
     font-family: 'Raleway';
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     text-shadow: 1px 1px 2px black;
     padding: 11px 13px 11px 4px;
@@ -77,6 +80,7 @@ h1, .all-notes {
     font-family: 'funhouse';
     color: var(--lightbrown-color);
     text-shadow: 2px 2px 4px black;
+    margin: 8px;
 }
 
 footer.page-footer {
@@ -86,6 +90,7 @@ footer.page-footer {
     color: var(--bean-color);
     background-color: #F5DEB3;
     box-shadow: 2px 2px 4px black;
+    margin-top: 20px;
 }
 
 button.submit-logout {
@@ -104,7 +109,7 @@ button.submit-logout:focus {
     outline: none;
 }
 
-.image-container {
+.image-container, .else {
     display: grid;
     justify-content: center;
     padding: 1rem 0;
@@ -112,7 +117,7 @@ button.submit-logout:focus {
 
 img.landing-image {
     height: 85%;
-    width: 90%;
+    width: 100%;
 
 }
 
@@ -182,7 +187,7 @@ input {
     font-family: 'Raleway';
 }
 
-button[type=submit] {
+button[type=submit], input[type=submit] {
     background-color: var(--lightbrown-color);
     color: var(--bean-color);
     padding: 6px 11px;
@@ -194,25 +199,7 @@ button[type=submit] {
 
 }
 
-button[type=submit]:hover {
-    color: white;
-    background-color: var(--bean-color);
-}
-
-input[type=submit] {
-    background-color: var(--lightbrown-color);
-    color: var(--bean-color);
-    padding: 6px 11px;
-    margin: 10px;
-    border: 2px solid var(--bean-color);
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px var(--bean-color);
-    align-items: center;
-
-}
-
-input[type=submit]:hover {
+button[type=submit]:hover, input[type=submit]:hover {
     color: white;
     background-color: var(--bean-color);
 }
@@ -224,6 +211,7 @@ input[type=submit]:hover {
     background-color: var(--papayawhip-color);
     padding: 15px;
     box-shadow: 2px 2px 7px black;
+    margin: 0 10px 20px;
 }
 
 label, .fieldWrapper {
@@ -238,7 +226,7 @@ label, .fieldWrapper {
     font-size: 1rem;
 }
 
-li {
+li, .no-notes {
     font-family: 'Raleway';
 }
 
@@ -260,6 +248,7 @@ li.game-title {
 .table-container, .notes-wrapper {
     display: grid;
     padding: 12px;
+    margin-bottom: 15px;
 }
 
 table.gifts, thead, tbody {
@@ -267,7 +256,6 @@ table.gifts, thead, tbody {
     border-style: groove;
     background-color: var(--lightbrown-color);
     padding: 10px 6px;
-    justify-content: center;
 
 }
 
@@ -280,10 +268,35 @@ th, td {
     font-family: 'Raleway';
     background-color: #FFEFD5;
     color: var(--bean-color);
-    align-items: center;
 }
 
 textarea {
     resize: vertical;
-    width: 450px;
+    width: 100%;
+}
+
+.notes-content {
+    width: 95vw;
+    background-color: #FFEFD5;
+    border: 2px solid var(--darkbrown-color);
+    border-radius: 10px;
+    margin: 8px;
+    padding: 8px;
+    font-family: 'Raleway';
+    color: var(--bean-color);
+    font-size: 15px;
+    
+}
+
+.notecontent {
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+}
+
+.notegame {
+    font-family: 'funhouse';
+}
+
+.edit-delete {
+    margin: 10px 8px 10px;
 }

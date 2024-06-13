@@ -7,26 +7,28 @@
 <div class="title-container">
     <h1>{{ bachelor.name }}/{{ object.game.title }}</h1>
 </div>
-<table>
-    <thead>
-        <tr>
-            <th>Loved Gifts</th>
-            <th>Liked Gifts</th>
-            <th>Neutral Gifts</th>
-            <th>Disliked Gifts</th>
-            <th>Hated Gifts</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{bachelor.loved}}</td>&nbsp;
-            <td>{{bachelor.liked}}</td>&nbsp;
-            <td>{{bachelor.neutral}}</td>&nbsp;
-            <td>{{bachelor.disliked}}</td>&nbsp;
-            <td>{{bachelor.hated}}</td>&nbsp;
-        </tr>
-    </tbody>
-</table>
+<div class="table-container">
+    <table class="gifts">
+        <thead>
+            <tr>
+                <th>Loved Gifts</th>
+                <th>Liked Gifts</th>
+                <th>Neutral Gifts</th>
+                <th>Disliked Gifts</th>
+                <th>Hated Gifts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{bachelor.loved}}</td>&nbsp;
+                <td>{{bachelor.liked}}</td>&nbsp;
+                <td>{{bachelor.neutral}}</td>&nbsp;
+                <td>{{bachelor.disliked}}</td>&nbsp;
+                <td>{{bachelor.hated}}</td>&nbsp;
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <a href="{% url 'bachelor_update' bachelor.id %}">Update Bachelor</a>&nbsp;
 

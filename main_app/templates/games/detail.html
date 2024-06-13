@@ -9,7 +9,6 @@
 <div class="game-detailcontainer">
     {% if user.is_superuser %}
         <a href="{% url 'game_update' game.id %}">Edit Title</a>
-        <br />
         <a href="{% url 'game_delete' game.id %}">Delete Game</a>
     {% endif %}
     <a href="{% url 'create_note' game.id %}">Create Note</a>
@@ -17,14 +16,21 @@
     <a href="{% url 'bachelorettes' game.id %}">All Bachelorettes</a>
     {% if notes %}
     {% for note in notes %}
-    <h3>{{ note.title }}</h3>
-    <h5>{{ note.updated_at }}</h5>
-    <p>{{ note.content }}</p>
-    <a href="{% url 'note_update' note.id %}">Edit Note</a>
-    <a href="{% url 'delete_note' note.id %}">Delete Note</a>
+    <div class="notes-content">
+        <h3>{{ note.title }}</h3>
+        <h5>{{ note.updated_at }}</h5>
+        <p class="notecontent">{{ note.content }}</p>
+        <p>{{ user.username }}</p>
+    </div>
+    <div class="edit-delete">
+        <a href="{% url 'note_update' note.id %}">Edit Note</a>
+        <a href="{% url 'delete_note' note.id %}">Delete Note</a>
+    </div>
     {% endfor %}
     {% else %}
-    <h3>No Notes Added</h3>
+    <div class="else">
+        <h3 class="no-notes">No Notes Added</h3>
+    </div>
     {% endif %}
 </div>
 

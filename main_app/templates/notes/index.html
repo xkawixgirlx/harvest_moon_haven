@@ -12,10 +12,12 @@
 
 {% for note in notes %}
 <div class="notes-wrapper">
-    <h3>For {{ note.game }}</h3>
-    <h3>{{ note.title }}</h3>
-    <p>{{ note.updated_at }}</p>
-    <p>{{ note.content }}</p>
+    <div class="notes-content">
+        <h3 class="notegame">For {{ note.game }}</h3>
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.updated_at }}</p>
+        <p class="notecontent">{{ note.content }}</p>
+    </div>
 </div>
     <a href="{% url 'note_update' note.id %}">Edit Note</a>&nbsp;&nbsp;
     <a href="{% url 'delete_note' note.id %}">Delete Note</a>
