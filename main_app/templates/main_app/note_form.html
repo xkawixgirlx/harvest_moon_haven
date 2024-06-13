@@ -2,22 +2,28 @@
 
 {% block content %}
 
+<a href="javascript:history.back()" class="back">Back</a>
 
 
-<h1>Add Note</h1>
+<div class="title-container">
+    <h1>Add Note</h1>
+</div>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {% for item in form %}
-    <div class="fieldWrapper">
-        {{ item.label }} {{ item }}
-        {% if item.help_text %}
-        {{ item.help_text|safe }}
-        {% endif %}
-    </div>
-    <br>
-    {% endfor %}
-    <input type="submit" class="enter-notebtn" value="Add New Note">
-</form>
+
+<div class="form-container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for item in form %}
+        <div class="fieldWrapper">
+            {{ item.label }} {{ item }}
+            {% if item.help_text %}
+            {{ item.help_text|safe }}
+            {% endif %}
+        </div>
+        <br>
+        {% endfor %}
+        <input type="submit" class="enter-notebtn" value="Add New Note">
+    </form>
+</div>
 
 {% endblock %}

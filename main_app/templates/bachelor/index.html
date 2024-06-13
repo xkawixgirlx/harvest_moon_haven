@@ -10,14 +10,15 @@
 
 {% for bachelor in game.bachelors.all %}
 <a href="{% url 'bachelor_detail' bachelor.id %}"><h2>{{ bachelor.name }}</h2></a>
-    <table>
+<div class="table-container">    
+    <table class="gifts">
         <thead>
             <tr>
-                <th>Loved Gifts</th>
-                <th>Liked Gifts</th>
-                <th>Neutral Gifts</th>
-                <th>Disliked Gifts</th>
-                <th>Hated Gifts</th>
+                <th>Loved Gifts</th>&nbsp;
+                <th>Liked Gifts</th>&nbsp;
+                <th>Neutral Gifts</th>&nbsp;
+                <th>Disliked Gifts</th>&nbsp;
+                <th>Hated Gifts</th>&nbsp;
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
             </tr>
         </tbody>
     </table>
+</div>
     <a href="{% url 'bachelor_update' bachelor.id %}">Update Bachelor</a>&nbsp;
     {% if user.is_superuser %}
         <a href="{% url 'bachelor_delete' bachelor.id %}">Delete Bachelor</a>

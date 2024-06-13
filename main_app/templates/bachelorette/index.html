@@ -11,7 +11,7 @@
 
 {% for bachelorette in game.bachelorettes.all %}
 <a href="{% url 'bachelorette_detail' bachelorette.id %}"><h2>{{ bachelorette.name }}</h2></a>
-    <table>
+    <table class="gifts">
         <thead>
             <tr>
                 <th>Loved Gifts</th>

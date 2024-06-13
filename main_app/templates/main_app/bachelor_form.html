@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h1>Add Bachelor</h1>
+<a href="javascript:history.back()" class="back">Back</a>
+
+<div class="title-container">
+    <h1>Add Bachelor</h1>
+</div>
 
 
-
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Add Bachelor" class="add-bachelorbtn">
-</form>
-
+<div class="form-container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Add Bachelor" class="add-bachelorbtn">
+    </form>
+</div>
 {% endblock %}

@@ -54,7 +54,7 @@ header {
 a {
     color: white;
     font-family: 'Raleway';
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 1px 1px 2px black;
     text-align: center;
     padding: 11px 13px;
     text-decoration: none;
@@ -73,7 +73,7 @@ a:hover {
     padding: 11px 13px 11px 4px;
 }
 
-h1 {
+h1, .all-notes {
     font-family: 'funhouse';
     color: var(--lightbrown-color);
     text-shadow: 2px 2px 4px black;
@@ -158,9 +158,9 @@ img.about-image {
 p.about {
     font-family: 'Raleway';
     font-size: 1.5rem;
-    color: var(--darkbrown-color);
+    color: var(--bean-color);
     text-align: center;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 2px 2px 4px var(--darkbrown-color);
 }
 
 .home, .about-title {
@@ -226,7 +226,7 @@ input[type=submit]:hover {
     box-shadow: 2px 2px 7px black;
 }
 
-label {
+label, .fieldWrapper {
     font-family: 'Raleway';
     font-size: 1.2rem;
     color: var(--bean-color);
@@ -242,11 +242,48 @@ li {
     font-family: 'Raleway';
 }
 
+li.game-title {
+    font-size: 1.75rem;
+    text-shadow: 2px 2px 5px #3D0C02;
+}
+
 .back {
     margin: 10px;
     color: var(--bean-color);
     font-size: 1.3rem;
 }
+
 .back:hover {
     color: white;
+}
+
+.table-container, .notes-wrapper {
+    display: grid;
+    padding: 12px;
+}
+
+table.gifts, thead, tbody {
+    border: 2px var(--darkbrown-color);
+    border-style: groove;
+    background-color: var(--lightbrown-color);
+    padding: 10px 6px;
+    justify-content: center;
+
+}
+
+table.gifts {
+    border-radius: 10px;
+    border-style: solid;
+}
+
+th, td {
+    font-family: 'Raleway';
+    background-color: #FFEFD5;
+    color: var(--bean-color);
+    align-items: center;
+}
+
+textarea {
+    resize: vertical;
+    width: 450px;
 }

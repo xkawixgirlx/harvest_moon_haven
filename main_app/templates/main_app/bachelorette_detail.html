@@ -3,9 +3,12 @@
 {% block content %}
 
 <a href="javascript:history.back()" class="back">Back</a>
+
 {% if object %}
-<h1>{{ bachelorette.name }}/{{ object.game.title }}</h1>
-<table>
+<div class="title-container">
+    <h1>{{ bachelorette.name }}/{{ object.game.title }}</h1>
+</div>
+<table class="gifts">
     <thead>
         <tr>
             <th>Loved Gifts</th>

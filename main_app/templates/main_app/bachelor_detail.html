@@ -4,7 +4,9 @@
 
 <a href="javascript:history.back()" class="back">Back</a>
 {% if object %}
-<h1>{{ bachelor.name }}/{{ object.game.title }}</h1>
+<div class="title-container">
+    <h1>{{ bachelor.name }}/{{ object.game.title }}</h1>
+</div>
 <table>
     <thead>
         <tr>
@@ -25,6 +27,7 @@
         </tr>
     </tbody>
 </table>
+
 <a href="{% url 'bachelor_update' bachelor.id %}">Update Bachelor</a>&nbsp;
 
 

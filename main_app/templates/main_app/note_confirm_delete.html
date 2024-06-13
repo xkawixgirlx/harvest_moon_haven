@@ -2,13 +2,18 @@
 
 {% block content %}
 
+<div class="title-container">
   <h1>Delete Note</h1>
+</div>
 
-  <h4>Are you sure you want to delete <span class="teal-text">{{ note.title }}</span>?</h4>
+  <h4>Are you sure you want to delete <span class="red-text">{{ note.title }}</span>?</h4>
 
+<div class="form-container">
   <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'detail' note.id %}">Cancel</a>
+    <a href="{% url 'detail' note.id %}" class="cancel">Cancel</a>
   </form>
+</div>
+
 {% endblock %}
