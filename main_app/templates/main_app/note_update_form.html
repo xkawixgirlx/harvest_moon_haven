@@ -7,13 +7,13 @@
     <h1>Edit {{ note.title }}</h1>
 </div>
 
-<div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
-        <table>
+        <table class="gifts">
             {{ form.as_table }}
         </table>
         <input type="submit" class="edit-notebtn" value="Update Note">
     </form>
-</div>
+
+    
 {% endblock %}

@@ -13,15 +13,13 @@
 </div>
 
 
-<div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
-        <table>
+        <table class="gifts">
             {{ form.as_table }}
         </table>
         <input type="submit" value="Add Game" class="add-gamebtn">
     </form>
-</div>
 
 
 {% endblock %}
