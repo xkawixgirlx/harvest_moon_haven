@@ -8,14 +8,12 @@
     <h1>Edit {{ bachelor.name }}</h1>
 </div>
 
-<div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
-        <table>
+        <table class="gifts">
             {{ form.as_table }}
         </table>
         <input type="submit" class="edit-bachelorbtn" value="Update Bachelor">
     </form>
-</div>
 
 {% endblock %}

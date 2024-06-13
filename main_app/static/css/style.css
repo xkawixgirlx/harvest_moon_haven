@@ -307,8 +307,3 @@ textarea {
     margin: 10px 8px 10px;
 }
 
-@media (min-width: 500px) {
-    textarea {
-        width: 90vw;
-    }
-}
