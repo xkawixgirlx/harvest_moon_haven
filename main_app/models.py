@@ -49,7 +49,6 @@ class Bachelorette(models.Model):
         return reverse('bachelorettes', kwargs={'bachelorettes_id': self.id})
 
 
-
 class Note(models.Model):
     title = models.CharField(max_length=100, default='null')
     content = models.TextField(max_length=3500)
